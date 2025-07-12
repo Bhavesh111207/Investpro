@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Compare Mutual Funds</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="compare.js"></script>
+</head>
+<body class="p-6 bg-gray-50">
+  <h1 class="text-2xl font-bold mb-4 text-center">Compare Mutual Funds</h1>
+
+  <div class="flex flex-col md:flex-row gap-4 mb-6 justify-center">
+    <input type="text" id="fund1" placeholder="Enter Fund 1 Name" class="border p-2 rounded w-full md:w-1/3">
+    <input type="text" id="fund2" placeholder="Enter Fund 2 Name" class="border p-2 rounded w-full md:w-1/3">
+    <button onclick="compareFunds()" class="bg-blue-600 text-white px-4 py-2 rounded">Compare</button>
+  </div>
+
+  <canvas id="compareChart"></canvas>
+</body>
+</html>

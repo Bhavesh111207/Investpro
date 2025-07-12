@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InvestPro - Mutual Fund Platform</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Firebase + Chart.js -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Icons -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4108/4108067.png" />
+
+  <!-- Firebase Config -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <script defer src="auth.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="chart.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <img src="https://cdn-icons-png.flaticon.com/512/4108/4108067.png" class="w-8 h-8" />
+      <h1 class="text-xl font-bold text-blue-600">InvestPro</h1>
+    </div>
+    <input type="text" id="searchInput" class="border px-2 py-1 rounded" placeholder="Search mutual funds..."/>
+    <div id="authButtons">
+      <button id="loginBtn" class="bg-blue-600 text-white px-4 py-2 rounded mr-2">Login</button>
+      <button id="registerBtn" class="border border-blue-600 text-blue-600 px-4 py-2 rounded">Register</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-10 text-center">
+    <h2 class="text-4xl font-bold mb-2">Mutual Fund Investment Made Easy</h2>
+    <p class="text-lg">Compare, Plan & Invest with confidence.</p>
+  </section>
+<section class="p-6 max-w-4xl mx-auto bg-white shadow rounded mt-6">
+  <h2 class="text-2xl font-bold mb-4">📈 Real-Time Stock Price</h2>
+  <div class="flex gap-2 mb-4">
+    <input id="stockSymbol" class="border p-2 rounded w-full" placeholder="Enter Stock Symbol (e.g., RELIANCE.BSE)" />
+    <button onclick="fetchStockPrice()" class="bg-blue-600 text-white px-4 py-2 rounded">Get Price</button>
+  </div>
+  <p id="stockStatus" class="text-sm text-gray-600 mb-2"></p>
+  <canvas id="stockChart" height="200"></canvas>
+</section>
+
+  <!-- SIP Calculator -->
+  <section class="p-6 max-w-3xl mx-auto bg-white shadow rounded mt-6">
+    <h2 class="text-2xl font-semibold mb-4 text-center">SIP Calculator</h2>
+    <div class="flex flex-col gap-4">
+      <input id="monthly" type="number" class="border rounded px-3 py-2" placeholder="Monthly Investment (₹)">
+      <input id="rate" type="number" class="border rounded px-3 py-2" placeholder="Expected Annual Return (%)">
+      <input id="years" type="number" class="border rounded px-3 py-2" placeholder="Duration (Years)">
+      <button onclick="calculateSIP()" class="bg-blue-600 text-white py-2 rounded">Calculate</button>
+      <p id="result" class="text-lg font-semibold text-center mt-2"></p>
+    </div>
+    <canvas id="sipChart" class="mt-6"></canvas>
+  </section>
+
+  <!-- Fund List Section -->
+  <section class="p-6">
+    <h2 class="text-2xl font-semibold mb-4">Top Mutual Funds</h2>
+    <div id="fundList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="p-6 bg-gray-100">
+    <h2 class="text-2xl font-semibold mb-4">Learn & Grow</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="p-4 bg-white rounded shadow">
+        <h3 class="font-bold">What is SIP?</h3>
+        <p class="text-sm">A Systematic Investment Plan (SIP) allows you to invest small amounts periodically.</p>
+      </div>
+      <div class="p-4 bg-white rounded shadow">
+        <h3 class="font-bold">Top 5 Mutual Funds in 2025</h3>
+        <p class="text-sm">Explore high-return equity and hybrid funds based on 5-year CAGR.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-4 bg-gray-100 text-sm">
+    <p>© 2025 InvestPro. All rights reserved.</p>
+  </footer>
+</body>
+</html>
